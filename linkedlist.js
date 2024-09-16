@@ -168,6 +168,54 @@
 
 
 // converting an array to an linked list
+// class Node {
+//     constructor(value) {
+//         this.value = value;
+//         this.next = null;
+//     }
+// }
+
+
+// class LinkedList {
+//     constructor() {
+//         this.head = null;
+//     }
+
+//     arrayToLinkedList(arr) {
+//         if (arr.length === 0) {
+//             return null
+//         }
+
+//         this.head = new Node(arr[0]);
+//         let curr = this.head;
+//         for (let i = 1; i < arr.length; i++) {
+//             curr.next = new Node(arr[i]);
+//             curr = curr.next;
+//         }
+//         return curr;
+//     }
+
+//     print() {
+//         if (this.head === 0) {
+//             console.log('list is empty');
+//         } else {
+//             let curr = this.head;
+//             let listValues = '';
+//             while (curr) {
+//                 listValues += `${curr.value} => `;
+//                 curr = curr.next;
+//             }
+//             listValues += 'null';
+//             console.log('listValues:', listValues);
+//         }
+//     }
+// }
+
+// let list = new LinkedList();
+
+// list.arrayToLinkedList([10, 20, 30, 40, 50]);
+
+// list.print()
 
 class Node {
     constructor(value) {
@@ -176,17 +224,17 @@ class Node {
     }
 }
 
-
 class LinkedList {
     constructor() {
-        this.head = null;
+        this.head === null;
+        this.size === 0;
     }
 
-    arrayToLinkedList(arr) {
-        if (arr.length === 0) {
-            return null
-        }
+    isEmpty() {
+        return this.size === 0;
+    }
 
+    arrayToListedList(arr) {
         this.head = new Node(arr[0]);
         let curr = this.head;
         for (let i = 1; i < arr.length; i++) {
@@ -197,25 +245,24 @@ class LinkedList {
     }
 
     print() {
-        if (this.head === 0) {
+        if (this.isEmpty()) {
             console.log('list is empty');
-        } else {
-            let curr = this.head;
-            let listValues = '';
-            while (curr) {
-                listValues += `${curr.value} => `;
-                curr = curr.next;
-            }
-            listValues += 'null';
-            console.log('listValues:', listValues);
         }
+
+        let curr = this.head;
+        let listValues = '';
+        while (curr) {
+            listValues += `${curr.value} ==> `;
+            curr = curr.next;
+        }
+        listValues += 'null';
+        console.log('listValues:', listValues);
     }
 }
 
+
 let list = new LinkedList();
 
-list.arrayToLinkedList([10, 20, 30, 40, 50]);
+list.arrayToListedList([1, 2, 3, 4, 5]);
 
 list.print()
-
-
