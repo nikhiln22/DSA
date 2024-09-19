@@ -1,13 +1,12 @@
 // finding the length of the last word from an array
+let string = 'My name is nikhil';
 
-// let string = 'My name is nikhil';
+function lastWordLength(str){
+    let stringArray = str.split(' ');
+    return stringArray[stringArray.length-1].length
+}
 
-// function lastWordLength(str){
-//     let stringArray = str.split(' ');
-//     return stringArray[stringArray.length-1].length
-// }
-
-// console.log(lastWordLength(string));
+console.log(lastWordLength(string));
 
 
 // checking whether a string contains all the alphabet
@@ -78,3 +77,40 @@
 // }
 
 // console.log(replace(str, n));
+
+// checking a string is substring or not
+// let str1 = 'goodmorning';
+// let str2 = 'omg';
+
+// function subString(str1, str2) {
+//     let j = 0;
+//     for (let i = 0; i < str1.length; i++) {
+//         if (str1[i] === str2[j]) {
+//             j++;
+//         }
+//     }
+//     return j === str2.length;
+// }
+
+// console.log(subString(str1, str2));
+
+// checking the substring is in the series
+// let str1 = 'goodmorning';
+// let str2 = 'ood';
+
+// function isSeries(str1, str2) {
+//     for (let i = 0; i < str1.length; i++) {
+//         let isMatch = true;
+//         for (let j = 0; j < str2.length; j++) {
+//             if (str1[i + j] !== str2[j]) {
+//                 isMatch = false;
+//                 break;
+//             }
+//         }
+//         if (isMatch) return true
+//     }
+//     return false;
+// }
+
+// console.log(isSeries(str1, str2));
+

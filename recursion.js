@@ -231,6 +231,29 @@
 // console.log(stringReversal('sanup', 'sanup'.length - 1, ''));
 
 
+// deleting the character from the string using recursion
+
+let str = 'nikhil';
+let target = 'k';
+
+function removeTarget(str, target) {
+    return removeTargetHelper(str, target, 0, '');
+}
+
+function removeTargetHelper(str, target, index, newString) {
+
+    if (index === str.length) {
+        return newString;
+    }
+
+    if (str[index] !== target) {
+        newString += str[index];
+    }
+
+    return removeTargetHelper(str, target, index + 1, newString);
+}
+
+console.log(removeTarget(str, target));
 
 
 
