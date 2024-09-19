@@ -312,5 +312,214 @@
 // console.log(thirdMaximum(arr));
 
 
-// recursive binary search
-// array = [5, 7, 7, 8, 8, 10], target = 8
+// find the second largest even number in an array
+
+// let arr = [2, 3, 4, 5, 4, 6, 10];
+
+// function secondLargestEven(arr) {
+//     let largestEven = -Infinity;
+//     let secLargestEven = -Infinity;
+
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] % 2 === 0) {
+//             if (arr[i] > largestEven) {
+//                 secLargestEven = largestEven;
+//                 largestEven = arr[i];
+//             } else if (arr[i] !== largestEven && arr[i] > secLargestEven) {
+//                 secLargestEven = arr[i];
+//             }
+//         }
+//     }
+//     return secLargestEven;
+// }
+
+// console.log(secondLargestEven(arr));
+
+// find the smallest and largest number in the array
+// let arr = [15, 0, 2000, -1, 15];
+
+// function findSmallestLargest() {
+//     let smallest = Infinity;
+//     let largest = -Infinity;
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] < smallest) {
+//             smallest = arr[i];
+//         } else if (arr[i] > largest) {
+//             largest = arr[i];
+//         }
+//     }
+//     return [smallest, largest];
+// }
+
+// console.log(findSmallestLargest(arr));
+
+// finding the third largest number in the array
+// let arr = [15, 20, 2, 56, 1, 8];
+
+// let findLargestandSmallest = arr.reduce((acc, curr) => {
+//         if (curr < acc.smallest) {
+//             acc.smallest = curr;
+//         } else if (curr > acc.largest) {
+//             acc.largest = curr;
+//         }
+//     return acc;
+
+// }, { smallest: Infinity, largest: -Infinity });
+
+// console.log(findLargestandSmallest);
+
+
+// function thirdLargestNumber(arr) {
+//     let largest = -Infinity;
+//     let secLargest = -Infinity;
+//     let thirdLargest = -Infinity;
+
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] > largest) {
+//             thirdLargest = secLargest;
+//             secLargest = largest;
+//             largest = arr[i];
+
+//         } else if (arr[i] !== largest && arr[i] > secLargest) {
+//             thirdLargest = secLargest;
+//             secLargest = arr[i];
+//         } else if (arr[i] !== largest && arr[i] !== secLargest && arr[i] > thirdLargest) {
+//             thirdLargest = arr[i];
+//         }
+//     }
+//     return thirdLargest;
+// }
+
+// console.log(thirdLargestNumber(arr));
+
+
+// removing the duplicates from an array
+// let arr = [2, 3, 4, 3, 5, 2, 7, 7, 1000];
+// function removeDuplicates(arr) {
+//     let n = arr.length;
+//     for (let i = 0; i < n; i++) {
+//         for (j = i + 1; j < n; j++) {
+//             if (arr[i] === arr[j]) {
+//                 for (let k = j; k < n - 1; k++) {
+//                     arr[k] = arr[k + 1];
+//                 }
+//                 n--;
+//                 j--;
+//             }
+//         }
+//     }
+//     arr.length = n;
+//     return arr;
+// }
+
+// console.log(removeDuplicates(arr));
+
+// generate prime numbers in an array
+// function generatePrime(arr) {
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] <= 1) continue;
+//         let count = 0;
+//         for (let j = 2; j <= Math.sqrt(arr[i]); j++) {
+//             if (arr[i] % j === 0) {
+//                 count++;
+//                 break;
+//             }
+//         }
+//         if (count === 0) {
+//             console.log(arr[i]);
+//         }
+//     }
+// }
+
+
+// generatePrime([1, 2, 3, 4, 5, 6])
+
+// let arr = [25, 1, 3, 4, 5, 7];
+
+// function secLargest(arr) {
+//     let largest = -Infinity;
+//     let secLargest = -Infinity;
+
+//     for (let num of arr) {
+//         if (num > largest) {
+//             secLargest = largest;
+//             largest = num;
+//         } else if (num != largest && num > secLargest) {
+//             secLargest = num;
+//         }
+//     }
+//     return secLargest === -Infinity ? null : secLargest
+// }
+
+// console.log(secLargest(arr));
+
+
+
+// implementing the binary search
+// let arr = [2, 3, 90, 99, 344];
+// let target = 344;
+
+// function binarySearch(arr, target) {
+//     let leftIndex = 0;
+//     let rightIndex = arr.length - 1;
+
+//     while (leftIndex <= rightIndex) {
+//         let middleIndex = Math.floor((leftIndex + rightIndex) / 2);
+//         if (target === arr[middleIndex]) {
+//             return middleIndex;
+//         } else if (target < arr[middleIndex]) {
+//             rightIndex = middleIndex - 1;
+//         } else if (target > arr[middleIndex]) {
+//             leftIndex = middleIndex + 1;
+//         }
+//     }
+//     return -1;
+// }
+
+// console.log(binarySearch(arr, target));
+
+// function to check whether an array is palindrome or not
+// function isPalindrome(arr, start, end) {
+//     while (start <= end) {
+//         if (arr[start] !== arr[end]) {
+//             return false
+//         }
+//         start++;
+//         end--
+//     }
+//     return true;
+// }
+
+// console.log(isPalindrome([1, 2, 2, 1, 1], 0, [1, 2, 2, 1, 1].length - 1));
+
+
+// reverse both the array elements and the digits within the elements
+
+// let arr = [123, 456];
+
+// function arrayReverse(arr) {
+//     function reverseNum(num) {
+//         let reversed = 0;
+//         while (num > 0) {
+//             reversed = reversed * 10 + (num % 10);
+//             num = Math.floor(num / 10);
+//         }
+//         return reversed;
+//     }
+
+//     let start = 0;
+//     let end = arr.length - 1;
+
+//     while (start < end) {
+//         [arr[start], arr[end]] = [arr[end], arr[start]];
+//         start++;
+//         end--;
+//     }
+
+//     for(let i=0;i<arr.length;i++){
+//         arr[i] = reverseNum(arr[i]);
+//     }
+//     return arr;
+// }
+
+// console.log(arrayReverse(arr));

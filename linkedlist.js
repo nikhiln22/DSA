@@ -264,8 +264,7 @@
 // list.print()
 
 
-// reversing the linkedlist using the recursion method
-
+// reversing the linkedlist using the iterative method
 // class Node {
 //     constructor(value) {
 //         this.value = value;
@@ -289,18 +288,17 @@
 //     }
 
 //     reverse() {
-//         this.head = this.reverseRecursion(this.head);
-//     }
+//         let curr = this.head;
+//         let prev = null;
+//         let next = null;
 
-//     reverseRecursion(node) {
-//         if (node.next === null) {
-//             return node;
+//         while (curr) {
+//             next = curr.next;
+//             curr.next = prev;
+//             prev = curr;
+//             curr = next;
 //         }
-
-//         let newHead = this.reverseRecursion(node.next);
-//         node.next.next = node;
-//         node.next = null;
-//         return newHead;
+//         return this.head = prev
 //     }
 
 //     print() {
@@ -821,4 +819,209 @@
 // list.print()
 
 
+// finding the middle element in the linked list
+
+// class Node {
+//     constructor(value) {
+//         this.value = value;
+//         this.next = null;
+//     }
+// }
+
+// class LinkedList {
+//     constructor() {
+//         this.head = null;
+//         this.size = 0;
+//     }
+
+//     append(value) {object
+//         let node = new Node(value);
+//         if (this.head === null) {
+//             this.head = node;
+//         } else {
+//             let curr = this.head;
+//             while (curr.next) {
+//                 curr = curr.next;
+//             }
+//             curr.next = node;
+//         }
+//         this.size++;
+//     }
+
+//     findMiddle() {
+//         let slow = this.head;
+//         let fast = this.head;
+//         while (fast && fast.next) {
+//             slow = slow.next;
+//             fast = fast.next.next;
+//         }
+//         return slow.value
+//     }
+
+//     print() {
+//         if (this.head === null) {
+//             console.log('list is empty');
+//         } else {
+//             let curr = this.head;
+//             let listValues = '';
+//             while (curr) {
+//                 listValues += `${curr.value} ==> `;
+//                 curr = curr.next;
+//             }
+//             listValues += 'null';
+//             console.log('listValues:', listValues);
+//         }
+//     }
+// }
+
+// let list = new LinkedList();
+
+// list.append(10);
+// list.append(20);
+// list.append(30);
+// list.append(40);
+// list.append(50);
+
+
+// list.print();
+
+// console.log(list.findMiddle());
+
+
+// removing the duplicates from an linked list
+
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+        this.size = 0;
+    }
+
+    append(value) {
+        let node = new Node(value);
+        if (this.head === null) {
+            this.head = node;
+        } else {
+            let curr = this.head;
+            while (curr.next) {
+                curr = curr.next;
+            }
+            curr.next = node;
+        }
+        this.size++;
+    }
+
+    removeDuplicates() {
+        let curr = this.head;
+        let prev = null;
+        let found = new Set();
+        while (curr) {
+            if (found.has(curr.value)) {
+                prev.next = curr.next;
+            } else {
+                found.add(curr.value);
+                prev = curr;
+            }
+            curr = curr.next;
+        }
+    }
+
+    insert(index, value) {
+        let node = new Node(value);
+        if (index < 0 || index > this.size) {
+            return;
+        } else if (index === this.size) {
+            this.append(value);
+        } else {
+            let curr = this.head;
+            for (let i = 0; i < index - 1; i++) {
+                curr = curr.next;
+            }
+            node.next = curr.next;
+            curr.next = node;
+            this.size++;
+        }
+    }
+
+    remove(value) {
+        let curr = this.head;
+        if (curr.value === value) {
+            this.head = this.head.next;
+        } else if (curr.next.value === value) {
+            while (curr.next) {
+                curr.next = curr.next.next;
+                break;
+            }
+            curr = curr.next;
+        }
+    }
+
+    reverseIterative() {
+        let curr = this.head;
+        let prev = null;
+        let next = null;
+
+        while (curr) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        this.head = prev
+    }
+
+    reverse() {
+        this.head = this.reverseRecursion(this.head);
+    }
+
+    reverseRecursion(node) {
+        if (node.next === null) {
+            return node;
+        }
+
+        let newHead = this.reverseRecursion(node.next);
+        node.next.next = node;
+        node.next = null;
+        return newHead
+    }
+
+
+    print() {
+        if (this.head === null) {
+            console.log('list is empty');
+        } else {
+            let curr = this.head;
+            let listValues = '';
+            while (curr) {
+                listValues += `${curr.value} => `;
+                curr = curr.next;
+            }
+            listValues += 'null';
+            console.log('listValues:', listValues);
+        }
+    }
+}
+
+
+let list = new LinkedList();
+
+list.append(10);
+list.append(23);
+list.append(10);
+list.append(15);
+list.append(5000);
+list.append(1);
+list.append(13);
+
+list.print();
+
+list.reverseIterative();
+
+list.print()
 

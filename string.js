@@ -1,12 +1,12 @@
 // finding the length of the last word from an array
-let string = 'My name is nikhil';
+// let string = 'My name is nikhil';
 
-function lastWordLength(str){
-    let stringArray = str.split(' ');
-    return stringArray[stringArray.length-1].length
-}
+// function lastWordLength(str){
+//     let stringArray = str.split(' ');
+//     return stringArray[stringArray.length-1].length
+// }
 
-console.log(lastWordLength(string));
+// console.log(lastWordLength(string));
 
 
 // checking whether a string contains all the alphabet
@@ -113,4 +113,37 @@ console.log(lastWordLength(string));
 // }
 
 // console.log(isSeries(str1, str2));
+
+
+// function stringReversal(str, start, end, newString) {
+//     while (end >= start) {
+//         newString += str[end];
+//         end--;
+//     }
+//     return newString;
+// }
+
+// console.log(stringReversal('nikhil', 0, 'nikhil'.length - 1, ''));
+
+
+// checking whether an string is palindrome or not
+
+// function isPalindrome(str, start, end) {
+//     while (start <= end) {
+//         if (str[start] !== str[end]) {
+//             return false;
+//         }
+//         start++;
+//         end--;
+//     }
+//     return true;
+// }
+
+// console.log(isPalindrome('bahubai', 0, 'malayalam'.length - 1));
+
+
+
+
+
+
 
