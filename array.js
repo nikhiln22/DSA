@@ -507,19 +507,19 @@
 //         return reversed;
 //     }
 
-//     let start = 0;
-//     let end = arr.length - 1;
-
-//     while (start < end) {
-//         [arr[start], arr[end]] = [arr[end], arr[start]];
-//         start++;
-//         end--;
-//     }
-
-//     for(let i=0;i<arr.length;i++){
+//     for (let i = 0; i < arr.length; i++) {
 //         arr[i] = reverseNum(arr[i]);
 //     }
-//     return arr;
+
+//     function reverseRecursively(arr, left = 0, right = arr.length - 1) {
+//         if (left >= right) {
+//             return arr;
+//         }
+//         [arr[left], arr[right]] = [arr[right], arr[left]];
+//         return reverseRecursively(arr, left + 1, right - 1)
+//     }
+
+//     return reverseRecursively(arr);
 // }
 
 // console.log(arrayReverse(arr));

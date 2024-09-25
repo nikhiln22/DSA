@@ -20,6 +20,7 @@
 // }
 // console.log(containsAllAlphabet(string));
 
+
 // reversing an string...
 // let string = "The quick brown fox jumps over the lazy dog";
 // function reverseString(str){
@@ -36,29 +37,6 @@
 // }
 
 // reverseString(string);
-
-
-// checking whether an string is substring or not
-
-// function isSubstring(mainString, subString) {
-//     if (mainString.length < subString.length) return false
-
-//     if (subString.length === 0) return true
-
-//     for (let i = 0; i <= mainString.length - subString.length; i++) {
-//         let match = true;
-//         for (let j = 0; j < subString.length; j++) {
-//             if (mainString[i + j] !== subString[j]) {
-//                 match = false;
-//                 break;
-//             }
-//         }
-//         if(match) return true
-//     }
-//     return false;
-// }
-
-// console.log(isSubstring('Hello World!','World'))
 
 
 // Write a function to replace each alphabet in the given string with another alphabet occurring at the n-th position from each of them.

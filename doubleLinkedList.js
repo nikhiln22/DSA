@@ -12,7 +12,7 @@ class DoublyLinkedList {
         this.tail = null;
     }
 
-    // appending node at the end of the list
+    // adding node at the end of the list
     append(value) {
         let node = new Node(value);
         if (this.head === null) {

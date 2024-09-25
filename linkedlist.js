@@ -83,23 +83,6 @@
 //         }
 //     }
 
-//     removeMiddleNode() {
-//         if (this.isEmpty()) {
-//             console.log('list is too short to remove the last node');
-//         }
-
-//         let fast = this.node;
-//         let slow = this.node;
-//         let prev = null;
-
-//         while (fast.next) {
-//             fast = fast.next.next;
-//             prev = slow;
-//             slow = slow.next;
-//         }
-//         prev.next = slow.next;
-//     }
-
 
 //     search(value) {
 //         let temp = this.head;
@@ -890,138 +873,335 @@
 
 // removing the duplicates from an linked list
 
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-    }
-}
+// class Node {
+//     constructor(value) {
+//         this.value = value;
+//         this.next = null;
+//     }
+// }
 
-class LinkedList {
-    constructor() {
-        this.head = null;
-        this.size = 0;
-    }
+// class LinkedList {
+//     constructor() {
+//         this.head = null;
+//         this.size = 0;
+//     }
 
-    append(value) {
-        let node = new Node(value);
-        if (this.head === null) {
-            this.head = node;
-        } else {
-            let curr = this.head;
-            while (curr.next) {
-                curr = curr.next;
-            }
-            curr.next = node;
-        }
-        this.size++;
-    }
+//     append(value) {
+//         let node = new Node(value);
+//         if (this.head === null) {
+//             this.head = node;
+//         } else {
+//             let curr = this.head;
+//             while (curr.next) {
+//                 curr = curr.next;
+//             }
+//             curr.next = node;
+//         }
+//         this.size++;
+//     }
 
-    removeDuplicates() {
-        let curr = this.head;
-        let prev = null;
-        let found = new Set();
-        while (curr) {
-            if (found.has(curr.value)) {
-                prev.next = curr.next;
-            } else {
-                found.add(curr.value);
-                prev = curr;
-            }
-            curr = curr.next;
-        }
-    }
+//     removeDuplicates() {
+//         let curr = this.head;
+//         let prev = null;
+//         let found = new Set();
+//         while (curr) {
+//             if (found.has(curr.value)) {
+//                 prev.next = curr.next;
+//             } else {
+//                 found.add(curr.value);
+//                 prev = curr;
+//             }
+//             curr = curr.next;
+//         }
+//     }
 
-    insert(index, value) {
-        let node = new Node(value);
-        if (index < 0 || index > this.size) {
-            return;
-        } else if (index === this.size) {
-            this.append(value);
-        } else {
-            let curr = this.head;
-            for (let i = 0; i < index - 1; i++) {
-                curr = curr.next;
-            }
-            node.next = curr.next;
-            curr.next = node;
-            this.size++;
-        }
-    }
+//     insert(index, value) {
+//         let node = new Node(value);
+//         if (index < 0 || index > this.size) {
+//             return;
+//         } else if (index === this.size) {
+//             this.append(value);
+//         } else {
+//             let curr = this.head;
+//             for (let i = 0; i < index - 1; i++) {
+//                 curr = curr.next;
+//             }
+//             node.next = curr.next;
+//             curr.next = node;
+//             this.size++;
+//         }
+//     }
 
-    remove(value) {
-        let curr = this.head;
-        if (curr.value === value) {
-            this.head = this.head.next;
-        } else if (curr.next.value === value) {
-            while (curr.next) {
-                curr.next = curr.next.next;
-                break;
-            }
-            curr = curr.next;
-        }
-    }
+//     remove(value) {
+//         let curr = this.head;
+//         if (curr.value === value) {
+//             this.head = this.head.next;
+//         } else if (curr.next.value === value) {
+//             while (curr.next) {
+//                 curr.next = curr.next.next;
+//                 break;
+//             }
+//             curr = curr.next;
+//         }
+//     }
 
-    reverseIterative() {
-        let curr = this.head;
-        let prev = null;
-        let next = null;
+//     reverseIterative() {
+//         let curr = this.head;
+//         let prev = null;
+//         let next = null;
 
-        while (curr) {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-        }
-        this.head = prev
-    }
+//         while (curr) {
+//             next = curr.next;
+//             curr.next = prev;
+//             prev = curr;
+//             curr = next;
+//         }
+//         this.head = prev
+//     }
 
-    reverse() {
-        this.head = this.reverseRecursion(this.head);
-    }
+//     reverse() {
+//         this.head = this.reverseRecursion(this.head);
+//     }
 
-    reverseRecursion(node) {
-        if (node.next === null) {
-            return node;
-        }
+//     reverseRecursion(node) {
+//         if (node.next === null) {
+//             return node;
+//         }
 
-        let newHead = this.reverseRecursion(node.next);
-        node.next.next = node;
-        node.next = null;
-        return newHead
-    }
-
-
-    print() {
-        if (this.head === null) {
-            console.log('list is empty');
-        } else {
-            let curr = this.head;
-            let listValues = '';
-            while (curr) {
-                listValues += `${curr.value} => `;
-                curr = curr.next;
-            }
-            listValues += 'null';
-            console.log('listValues:', listValues);
-        }
-    }
-}
+//         let newHead = this.reverseRecursion(node.next);
+//         node.next.next = node;
+//         node.next = null;
+//         return newHeadfunction fib(n){
+    if(n<2) return n;
+//     }
 
 
-let list = new LinkedList();
+//     print() {
+//         if (this.head === null) {
+//             console.log('list is empty');
+//         } else {
+//             let curr = this.head;
+//             let listValues = '';
+//             while (curr) {
+//                 listValues += `${curr.value} => `;
+//                 curr = curr.next;
+//             }
+//             listValues += 'null';
+//             console.log('listValues:', listValues);
+//         }
+//     }
+// }
 
-list.append(10);
-list.append(23);
-list.append(10);
-list.append(15);
-list.append(5000);
-list.append(1);
-list.append(13);
 
-list.print();
+// let list = new LinkedList();
 
-list.reverseIterative();
+// list.append(10);
+// list.append(23);
+// list.append(10);
+// list.append(15);
+// list.append(5000);
+// list.append(1);
+// list.append(13);
 
-list.print()
+// list.print();
+
+// list.reverseIterative();
+
+// list.print()
+
+
+// finding an particular value and insert a newvalue next to the existing value
+// class Node{
+//     constructor(value){
+//         this.value = value;
+//         this.next = null;
+//     }
+// }
+
+
+// class LinkedList{
+//     constructor(){
+//         this.head = null;
+//     }
+
+//     append(value){
+//         let node = new Node(value);
+//         if(this.head === null){
+//             this.head = node;
+//         }else{
+//             let curr = this.head;
+//             while(curr.next){
+//                 curr = curr.next;
+//             }
+//             curr.next = node;
+//         }
+//     }
+
+    // findingAndInsertingAfter(value,insertValue){
+    //     let node = new Node(insertValue);
+    //     let curr = this.head;
+    //     let valueFound = false;
+    //     while(curr){
+    //         if(curr.value === value){
+    //             node.next = curr.next;
+    //             curr.next = node;
+    //             valueFound = true;
+    //             break;
+    //         }
+    //         curr = curr.next;
+    //     }
+
+    //     if(!valueFound){
+    //         console.log(`Value ${value} not found in the list`);
+    //     }
+    // }
+
+//     print(){
+//         if(this.head === null){
+//             console.log('list is empty');
+//         }else{
+//             let curr = this.head;
+//             let listValues = '';
+//             while(curr){
+//                 listValues+=`${curr.value} ==> `;
+//                 curr = curr.next;
+//             }
+//             listValues += 'null';
+//             console.log('listValues:',listValues);
+//         }
+//     }
+// }
+
+
+// finding an particular value and insert a newvalue before the existing value
+// class Node {
+//     constructor(value) {
+//         this.value = value;
+//         this.next = null;
+//     }
+// }
+
+// class LinkedList {
+//     constructor() {
+//         this.head = null;
+//     }
+
+//     append(value) {
+//         let node = new Node(value);
+//         if (this.head === null) {
+//             this.head = node;
+//         } else {
+//             let curr = this.head;
+//             while (curr.next) {
+//                 curr = curr.next;
+//             }
+//             curr.next = node;
+//         }
+//     }
+
+//     findAndInsertingBefore(value, newValue) {
+//         let node = new Node(newValue);
+//         let curr = this.head;
+//         let valueFound = false;
+//         let prev = null;
+
+//         if (curr && curr.value === value) {
+//             node.next = this.head;
+//             this.head = node;
+//             valueFound = true;
+//         } else {
+//             while (curr) {
+//                 if (curr.value === value) {
+//                     node.next = curr;
+//                     prev.next = node;
+//                     valueFound = true;
+//                     break;
+//                 }
+//                 prev = curr;
+//                 curr = curr.next;
+//             }
+
+//             if (!valueFound) {
+//                 console.log(`value ${value} not found in this list`);
+//             }
+//         }
+//     }
+
+//     print() {
+//         if (this.head === null) {
+//             console.log('list is empty');
+//         } else {
+//             let curr = this.head;
+//             let listValues = '';
+//             while (curr) {
+//                 listValues += `${curr.value} ==> `;
+//                 curr = curr.next;
+//             }
+//             listValues += 'null';
+//             console.log('listValues:', listValues);
+//         }
+//     }
+// }
+
+
+// finding an particular value and insert a newvalue by replacing the existing value
+// class Node{
+//     constructor(value){
+//         this.value = value;
+//         this.next = null;
+//     }
+// }
+
+// class LinkedList{
+//     constructor(){
+//         this.head = null;
+//     }
+    
+//     append(value){
+//         let node = new Node(value);
+//         if(this.head === null){
+//             this.head = node;
+//         }else{
+//             let curr = this.head;
+//             while(curr.next){
+//                 curr = curr.next;
+//             }
+//             curr.next = node;
+//         }
+//     }
+    
+//     findAndReplaceTheValue(value,newValue){
+//         let curr = this.head;
+//         let valueFound = false;
+//         while(curr){
+//              if(curr.value === value){
+//                 curr.value = newValue;
+//                 valueFound = true;
+//         }
+//         curr = curr.next;
+//         }
+//         if(!valueFound){
+//             console.log(`value ${value} not found in the list`);
+//         }
+//     }
+    
+//     print(){
+//         if(this.head === null){
+//             console.log('list is empty');
+//         }else{
+//             let curr = this.head;
+//             let listvalues='';
+//             while(curr){
+//                 listvalues+=`${curr.value} ==> `;
+//                 curr = curr.next;
+//             }
+//             listvalues+='null';
+//             console.log('listvalues:',listvalues);
+//         }
+//     }
+// }
+
+
+// checking whether an linked list is palindrome or not
+
 
