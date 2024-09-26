@@ -27,6 +27,21 @@ class DoublyLinkedList {
         }
     }
 
+    // adding a new node at the begining of the list
+    prepend(value) {
+        let node = new Node(value);
+        if (this.head === null) {
+        // if the list is empty both the tail and the head point to the new node
+        this.head = node;
+        this.tail = node;
+        } else {
+        // update the next pointer of the current tail and set the new node as the tail
+        node.next = this.head;
+        this.head.prev = node;
+        this.head = node;
+        }
+    }
+
     // printing the list from the head to the tail
     print() {
         if (this.head === null) {
@@ -43,12 +58,3 @@ class DoublyLinkedList {
         }
     }
 }
-
-let list = new DoublyLinkedList();
-
-list.append(1000);
-list.append(2000);
-list.append(3000);
-list.append(4000);
-
-list.print()

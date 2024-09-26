@@ -1202,6 +1202,60 @@
 // }
 
 
-// checking whether an linked list is palindrome or not
+// inserting a new node in the middle of the list
+// class Node{
+//     constructor(value){
+//         this.value = value;
+//         this.next = null;
+//     }
+// }
 
+// class LinkedList{
+//     constructor(){
+//         this.head = null;
+//     }
+    
+//     append(value){
+//         let node = new Node(value);
+//         if(this.head === null){
+//             this.head = node;
+//         }else{
+//             let curr = this.head;
+//             while(curr.next){
+//                 curr = curr.next;
+//             }
+//             curr.next = node;
+//         }
+//     }
+    
+//     insertMiddle(value){
+//         let node = new Node(value);
+//         let fast = this.head;
+//         let slow = this.head;
+//         let prev = null;
+        
+//         while(fast && fast.next){
+//             fast = fast.next.next;
+//             prev = slow;
+//             slow = slow.next;
+//         }
+//         node.next = slow;
+//         prev.next = node;
+//     }
+    
+//     print(){
+//         if(this.head === null){
+//             console.log('list is empty');
+//         }else{
+//             let curr = this.head;
+//             let listValues = '';
+//             while(curr){
+//                 listValues+=`${curr.value} ==> `;
+//                 curr = curr.next;
+//             }
+//             listValues+='null';
+//             console.log('listValues:',listValues);
+//         }
+//     }
+// }
 

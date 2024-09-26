@@ -252,5 +252,29 @@
 // console.log(capitalizeAlternativeAndReverse(str, 0, ''));
 
 
+// printing prime numbers from an array using the recursion
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// function isPrime(n, divisor = 2) {
+//     if (n <= 1) return false;
+//     if (divisor > Math.sqrt(n)) return true;
+//     if (n % divisor === 0) return false;
+//     return isPrime(n, divisor + 1);
+// }
+
+// function printPrimesFromArray(arr, index = 0) {
+//     if (index >= arr.length) return;
+    
+//     if (isPrime(arr[index])) {
+//         console.log(arr[index]);
+//     }
+    
+//     printPrimesFromArray(arr, index + 1);
+// }
+
+// Print prime numbers from the array
+// printPrimesFromArray(arr);
+
+
 
 
