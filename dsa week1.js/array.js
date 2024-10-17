@@ -523,3 +523,33 @@
 // }
 
 // console.log(arrayReverse(arr));
+
+
+// finding the prime numbers from the below array
+
+let array = [5, 6, 7, [7, [0, 6]], [9]];
+
+function findPrime(arr) {
+    let primes = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            primes = primes.concat(findPrime(arr[i]));
+        } else if (isPrime(arr[i])) {
+            primes.push(arr[i]);
+        }
+    }
+    return primes;
+}
+
+function isPrime(num) {
+    if (num <= 1) return false;
+
+    for (let i = 2; i < Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+console.log(findPrime(array));

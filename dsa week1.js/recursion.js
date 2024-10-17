@@ -276,5 +276,8 @@
 // printPrimesFromArray(arr);
 
 
+// flatten the array using the recursion
+
+// let arr = [1, 2, ["hello", 3, [4, 5, "world", [7, {}],8],9], 10, {}];
 
 
