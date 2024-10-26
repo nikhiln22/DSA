@@ -273,41 +273,41 @@
 
 // checking if two binary trees are identical
 
-// class TreeNode {
-//     constructor(value) {
-//         this.value = value;
-//         this.left = null;
-//         this.right = null;
-//     }
-// }
+class TreeNode {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
 
-// function areIdentical(tree1, tree2) {
+function areIdentical(tree1, tree2) {
 
-//     if (tree1 === null && tree2 === null) {
-//         return true;
-//     }
+    if (tree1 === null && tree2 === null) {
+        return true;
+    }
 
-//     if (tree1 === null || tree2 === null) {
-//         return false;
-//     }
+    if (tree1 === null || tree2 === null) {
+        return false;
+    }
 
-//     return (tree1.value === tree2.value) &&
-//            areIdentical(tree1.left, tree2.left) &&
-//            areIdentical(tree1.right, tree2.right);
-// }
+    return (tree1.value === tree2.value) &&
+           areIdentical(tree1.left, tree2.left) &&
+           areIdentical(tree1.right, tree2.right);
+}
 
-// let tree1 = new TreeNode(1);
-// tree1.left = new TreeNode(2);
-// tree1.right = new TreeNode(3);
+let tree1 = new TreeNode(1);
+tree1.left = new TreeNode(2);
+tree1.right = new TreeNode(3);
 
-// let tree2 = new TreeNode(1);
-// tree2.left = new TreeNode(2);
-// tree2.right = new TreeNode(3);
+let tree2 = new TreeNode(1);
+tree2.left = new TreeNode(2);
+tree2.right = new TreeNode(3);
 
-// console.log(areIdentical(tree1, tree2));
+console.log(areIdentical(tree1, tree2));
 
 
-// inverting an binary search tree
+// inverting an binary tree
 
 // class TreeNode {
 //     constructor(value) {
@@ -425,7 +425,65 @@
 
 // class TreeNode {
 //     constructor(value) {
-//         this.value = value;
+//         this.value = value;class TrieNode {
+//     constructor() {
+//         this.children = {};
+//         this.isEndOfWord = false;
+//     }
+// }
+
+// class Trie {
+//     constructor() {
+//         this.root = new TrieNode();
+//     }
+
+//     insert(word) {
+//         let node = this.root;
+//         for (let char of word) {
+//             if (!node.children[char]) {
+//                 node.children[char] = new TrieNode();
+//             }
+//             node = node.children[char];
+//         }
+//         node.isEndOfWord = true;
+//     }
+
+//     searchPrefix(prefix) {
+//         let node = this.root;
+//         for (let char of prefix) {
+//             if (!node.children[char]) {
+//                 return [];
+//             }
+//             node = node.children[char];
+//         }
+//         return this.getAllWords(node, prefix);
+//     }
+
+    
+//     getAllWords(node, prefix) {
+//         let result = [];
+//         if (node.isEndOfWord) {
+//             result.push(prefix);
+//         }
+
+//         for (let char in node.children) {
+//             result = result.concat(this.getAllWords(node.children[char], prefix + char));
+//         }
+
+//         return result;
+//     }
+// }
+
+
+// let trie = new Trie();
+// trie.insert("apple");
+// trie.insert("app");
+// trie.insert("apricot");
+// trie.insert("banana");
+
+// console.log(trie.searchPrefix("app")); // Output: ["apple", "app"]
+// console.log(trie.searchPrefix("apr")); // Output: ["apricot"]
+// console.log(trie.searchPrefix("ban"));
 //         this.left = null;
 //         this.right = null;
 //     }
@@ -619,80 +677,80 @@
 
 // finding the second largest node in the BST
 
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.right = null;
-        this.left = null;
-    }
-}
+// class Node {
+//     constructor(value) {
+//         this.value = value;
+//         this.right = null;
+//         this.left = null;
+//     }
+// }
 
-class BinarySearchTree {
-    constructor() {
-        this.root = null;
-    }
+// class BinarySearchTree {
+//     constructor() {
+//         this.root = null;
+//     }
 
-    insert(value) {
-        let node = new Node(value);
-        if (this.root === null) {
-            this.root = node;
-        } else {
-            this.insertNode(this.root, node);
-        }
-    }
+//     insert(value) {
+//         let node = new Node(value);
+//         if (this.root === null) {
+//             this.root = node;
+//         } else {
+//             this.insertNode(this.root, node);
+//         }
+//     }
 
-    insertNode(root, node) {
-        if (node.value < root.value) {
-            if (root.left === null) {
-                root.left = node;
-            } else {
-                this.insertNode(root.left, node);
-            }
-        } else {
-            if (root.right === null) {
-                root.right = node;
-            } else {
-                this.insertNode(root.right, node);
-            }
-        }
-    }
+//     insertNode(root, node) {
+//         if (node.value < root.value) {
+//             if (root.left === null) {
+//                 root.left = node;
+//             } else {
+//                 this.insertNode(root.left, node);
+//             }
+//         } else {
+//             if (root.right === null) {
+//                 root.right = node;
+//             } else {
+//                 this.insertNode(root.right, node);
+//             }
+//         }
+//     }
 
-    max(root) {
-        if (!root.right) {
-            return root.value;
-        } else {
-            return this.max(root.right);
-        }
-    }
+//     max(root) {
+//         if (!root.right) {
+//             return root.value;
+//         } else {
+//             return this.max(root.right);
+//         }
+//     }
 
-    findSecondLargest() {
-        if (this.root === null || (this.root.left === null && this.root.right === null)) {
-            console.log('tree must have at least two nodes');
-        }
+//     findSecondLargest() {
+//         if (this.root === null || (this.root.left === null && this.root.right === null)) {
+//             console.log('tree must have at least two nodes');
+//         }
 
-        let curr = this.root;
-        while (curr) {
-            if (curr.right === null && curr.left !== null) {
-                return this.max(curr.left).value;
-            }
+//         let curr = this.root;
+//         while (curr) {
+//             if (curr.right === null && curr.left !== null) {
+//                 return this.max(curr.left).value;
+//             }
 
-            if (curr.right !== null && curr.right.left === null && curr.right.right === null) {
-                return curr.value;
-            }
-            curr = curr.right;
-        }
-    }
-}
+//             if (curr.right !== null && curr.right.left === null && curr.right.right === null) {
+//                 return curr.value;
+//             }
+//             curr = curr.right;
+//         }
+//     }
+// }
 
-let bst = new BinarySearchTree();
+// let bst = new BinarySearchTree();
 
-bst.insert(10);
-bst.insert(5);
-bst.insert(15);
-bst.insert(3);
-bst.insert(7);
-bst.insert(12);
-bst.insert(17);
-bst.insert(20);
+// bst.insert(10);
+// bst.insert(5);
+// bst.insert(15);
+// bst.insert(3);
+// bst.insert(7);
+// bst.insert(12);
+// bst.insert(17);
+// bst.insert(20);
 
-console.log(bst.findSecondLargest()); 
+// console.log(bst.findSecondLargest()); 

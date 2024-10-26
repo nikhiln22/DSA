@@ -130,65 +130,63 @@
 
 // Given a prefix, return all words in the Trie that start with the given prefix.
 
-class TrieNode {
-    constructor() {
-        this.children = {};
-        this.isEndOfWord = false;
-    }
-}
+// class TrieNode {
+//     constructor() {
+//         this.children = {};
+//         this.isEndOfWord = false;
+//     }
+// }
 
-class Trie {
-    constructor() {
-        this.root = new TrieNode();
-    }
+// class Trie {
+//     constructor() {
+//         this.root = new TrieNode();
+//     }
 
-    insert(word) {
-        let node = this.root;
-        for (let char of word) {
-            if (!node.children[char]) {
-                node.children[char] = new TrieNode();
-            }
-            node = node.children[char];
-        }
-        node.isEndOfWord = true;
-    }
+//     insert(word) {
+//         let node = this.root;
+//         for (let char of word) {
+//             if (!node.children[char]) {
+//                 node.children[char] = new TrieNode();
+//             }
+//             node = node.children[char];
+//         }
+//         node.isEndOfWord = true;
+//     }
 
-    searchPrefix(prefix) {
-        let node = this.root;
-        for (let char of prefix) {
-            if (!node.children[char]) {
-                return [];
-            }
-            node = node.children[char];
-        }
-        return this.getAllWords(node, prefix);
-    }
+//     searchPrefix(prefix) {
+//         let node = this.root;
+//         for (let char of prefix) {
+//             if (!node.children[char]) {
+//                 return [];
+//             }
+//             node = node.children[char];
+//         }
+//         return this.getAllWords(node, prefix);
+//     }
 
     
-    getAllWords(node, prefix) {
-        let result = [];
-        if (node.isEndOfWord) {
-            result.push(prefix);
-        }
+//     getAllWords(node, prefix) {
+//         let result = [];
+//         if (node.isEndOfWord) {
+//             result.push(prefix);
+//         }
 
-        for (let char in node.children) {
-            result = result.concat(this.getAllWords(node.children[char], prefix + char));
-        }
+//         for (let char in node.children) {
+//             result = result.concat(this.getAllWords(node.children[char], prefix + char));
+//         }
 
-        return result;
-    }
-}
-
-
-let trie = new Trie();
-trie.insert("apple");
-trie.insert("app");
-trie.insert("apricot");
-trie.insert("banana");
-
-console.log(trie.searchPrefix("app")); // Output: ["apple", "app"]
-console.log(trie.searchPrefix("apr")); // Output: ["apricot"]
-console.log(trie.searchPrefix("ban")); // Output: ["banana"]
+//         return result;
+//     }
+// }
 
 
+// let trie = new Trie();
+// trie.insert("apple");
+// trie.insert("app");
+// trie.insert("apricot");
+// trie.insert("banana");
+
+// console.log(trie.searchPrefix("app")); // Output: ["apple", "app"]
+// console.log(trie.searchPrefix("apr")); // Output: ["apricot"]
+// console.log(trie.searchPrefix("ban")); // Output: ["banana"]
 

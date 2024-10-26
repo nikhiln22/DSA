@@ -6,21 +6,21 @@
 //     let left = 2 * i + 1; 
 //     let right = 2 * i + 2; 
 
-    
+
 //     if (left < n && arr[left] > arr[largest]) {
 //         largest = left;
 //     }
 
-    
+
 //     if (right < n && arr[right] > arr[largest]) {
 //         largest = right;
 //     }
 
-   
+
 //     if (largest !== i) {
 //         [arr[i], arr[largest]] = [arr[largest], arr[i]]; 
 
-        
+
 //         heapify(arr, n, largest);
 //     }
 // }
@@ -28,16 +28,16 @@
 // function heapSort(arr) {
 //     let n = arr.length;
 
-    
+
 //     for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
 //         heapify(arr, n, i);
 //     }
 
-  
+
 //     for (let i = n - 1; i >= 0; i--) {
 //         [arr[0], arr[i]] = [arr[i], arr[0]];
 
-        
+
 //         heapify(arr, i, 0);
 //     }
 // }
@@ -109,7 +109,7 @@
 //         heap.sort((a, b) => a - b);
 //     }
 
-  
+
 //     while (heap.length > 0) {
 //         result.push(heap.shift());
 //     }
@@ -130,35 +130,35 @@
 //         this.heap = [];
 //     }
 
-   
+
 //     parentIndex(index) {
 //         return Math.floor((index - 1) / 2);
 //     }
 
-  
+
 //     leftChildIndex(index) {
 //         return 2 * index + 1;
 //     }
 
-   
+
 //     rightChildIndex(index) {
 //         return 2 * index + 2;
 //     }
 
-   
+
 //     insert(value) {
 //         this.heap.push(value);
 //         this.bubbleUp();
 //     }
 
-   
+
 //     bubbleUp() {
 //         let index = this.heap.length - 1;
 
 //         while (index > 0) {
 //             const parentIdx = this.parentIndex(index);
 //             if (this.heap[index] < this.heap[parentIdx]) {
-                
+
 //                 [this.heap[index], this.heap[parentIdx]] = [this.heap[parentIdx], this.heap[index]];
 //                 index = parentIdx;
 //             } else {
@@ -167,7 +167,7 @@
 //         }
 //     }
 
-   
+
 //     extractMin() {
 //         if (this.heap.length === 0) return null;
 //         if (this.heap.length === 1) return this.heap.pop();
@@ -178,7 +178,7 @@
 //         return min;
 //     }
 
-   
+
 //     bubbleDown() {
 //         let index = 0;
 
@@ -186,7 +186,7 @@
 //             let smallerChildIndex = this.leftChildIndex(index);
 //             const rightChildIdx = this.rightChildIndex(index);
 
-            
+
 //             if (rightChildIdx < this.heap.length && this.heap[rightChildIdx] < this.heap[smallerChildIndex]) {// Output: 3
 //                 smallerChildIndex = rightChildIdx;
 //             }
@@ -220,101 +220,152 @@
 
 // implementing the max heap
 
-class MaxHeap {
-    constructor() {
-        this.heap = [];
+// class MaxHeap {
+//     constructor() {
+//         this.heap = [];
+//     }
+
+
+//     parentIndex(index) {
+//         return Math.floor((index - 1) / 2);
+//     }
+
+
+//     leftChildIndex(index) {
+//         return 2 * index + 1;
+//     }
+
+
+//     rightChildIndex(index) {
+//         return 2 * index + 2;
+//     }
+
+
+//     insert(value) {
+//         this.heap.push(value);
+//         this.bubbleUp();
+//     }
+
+
+//     bubbleUp() {
+//         let index = this.heap.length - 1;
+
+//         while (index > 0) {
+//             const parentIdx = this.parentIndex(index);
+//             if (this.heap[index] > this.heap[parentIdx]) {
+
+//                 [this.heap[index], this.heap[parentIdx]] = [this.heap[parentIdx], this.heap[index]];
+//                 index = parentIdx;
+//             } else {
+//                 break;
+//             }
+//         }
+//     }
+
+
+//     extractMax() {
+//         if (this.heap.length === 0) return null;
+//         if (this.heap.length === 1) return this.heap.pop();
+
+//         const max = this.heap[0];
+//         this.heap[0] = this.heap.pop(); 
+//         this.bubbleDown();
+//         return max;
+//     }
+
+
+//     bubbleDown() {
+//         let index = 0;
+
+//         while (this.leftChildIndex(index) < this.heap.length) {
+//             let largerChildIndex = this.leftChildIndex(index);
+//             const rightChildIdx = this.rightChildIndex(index);
+
+
+//             if (rightChildIdx < this.heap.length && this.heap[rightChildIdx] > this.heap[largerChildIndex]) {
+//                 largerChildIndex = rightChildIdx;
+//             }
+
+
+//             if (this.heap[index] >= this.heap[largerChildIndex]) break;
+
+
+//             [this.heap[index], this.heap[largerChildIndex]] = [this.heap[largerChildIndex], this.heap[index]];
+//             index = largerChildIndex;
+//         }
+//     }
+
+
+//     peek() {
+//         return this.heap.length > 0 ? this.heap[0] : null;
+//     }
+
+
+//     size() {
+//         return this.heap.length;
+//     }
+// }
+
+
+// const maxHeap = new MaxHeap();
+// maxHeap.insert(10);
+// maxHeap.insert(20);
+// maxHeap.insert(15);
+// maxHeap.insert(30);
+
+// console.log(maxHeap.peek());        
+// console.log(maxHeap.extractMax());  
+// console.log(maxHeap.peek());        
+// console.log(maxHeap.size());        
+
+
+
+// sorting the array in an ascending order using the max heapify method
+
+let arr = [13, 12, 6, 20, 5, 90];
+
+const heapSort = (arr) => {
+    const parentIndex = (i) => {
+        return Math.floor((i - 1) / 2);
     }
 
-  
-    parentIndex(index) {
-        return Math.floor((index - 1) / 2);
+    let index = parentIndex(arr.length - 1);
+    for (let i = index; i >= 0; i--) {
+        maxHeapify(i, arr, arr.length - 1);     // Building the maxheap
     }
 
-   
-    leftChildIndex(index) {
-        return 2 * index + 1;
-    }
+    function maxHeapify(index, arr, n) {
+        let leftIndex = 2 * index + 1;
+        let rightIndex = 2 * index + 2;
+        let endIndex = n;
+        let indexToShift = index;
 
-    
-    rightChildIndex(index) {
-        return 2 * index + 2;
-    }
+        // Check if left child exists and is greater than the current node
+        if (leftIndex <= endIndex && arr[leftIndex] > arr[indexToShift]) {
+            indexToShift = leftIndex;
+        }
 
-   
-    insert(value) {
-        this.heap.push(value);
-        this.bubbleUp();
-    }
+        // Check if right child exists and is greater than the current largest
+        if (rightIndex <= endIndex && arr[rightIndex] > arr[indexToShift]) {
+            indexToShift = rightIndex;
+        }
 
-  
-    bubbleUp() {
-        let index = this.heap.length - 1;
+        // If the largest is not the current node, swap and continue heapifying
+        if (indexToShift !== index) {
+            [arr[index], arr[indexToShift]] = [arr[indexToShift], arr[index]];
 
-        while (index > 0) {
-            const parentIdx = this.parentIndex(index);
-            if (this.heap[index] > this.heap[parentIdx]) {
-              
-                [this.heap[index], this.heap[parentIdx]] = [this.heap[parentIdx], this.heap[index]];
-                index = parentIdx;
-            } else {
-                break;
-            }
+            // Recursive call for the affected subtree
+            maxHeapify(indexToShift, arr, n);
         }
     }
 
-   
-    extractMax() {
-        if (this.heap.length === 0) return null;
-        if (this.heap.length === 1) return this.heap.pop();
-
-        const max = this.heap[0];
-        this.heap[0] = this.heap.pop(); 
-        this.bubbleDown();
-        return max;
+    for (let i = arr.length - 1; i > 0; i--) {
+        [arr[0], arr[i]] = [arr[i], arr[0]];    // Swap max element to the end
+        maxHeapify(0, arr, i - 1);              // Heapify the root to restore heap property
     }
-
-   
-    bubbleDown() {
-        let index = 0;
-
-        while (this.leftChildIndex(index) < this.heap.length) {
-            let largerChildIndex = this.leftChildIndex(index);
-            const rightChildIdx = this.rightChildIndex(index);
-
-           
-            if (rightChildIdx < this.heap.length && this.heap[rightChildIdx] > this.heap[largerChildIndex]) {
-                largerChildIndex = rightChildIdx;
-            }
-
-           
-            if (this.heap[index] >= this.heap[largerChildIndex]) break;
-
-           
-            [this.heap[index], this.heap[largerChildIndex]] = [this.heap[largerChildIndex], this.heap[index]];
-            index = largerChildIndex;
-        }
-    }
-
-   
-    peek() {
-        return this.heap.length > 0 ? this.heap[0] : null;
-    }
-
-
-    size() {
-        return this.heap.length;
-    }
+    return arr;
 }
 
+const res = heapSort(arr);
 
-const maxHeap = new MaxHeap();
-maxHeap.insert(10);
-maxHeap.insert(20);
-maxHeap.insert(15);
-maxHeap.insert(30);
-
-console.log(maxHeap.peek());        
-console.log(maxHeap.extractMax());  
-console.log(maxHeap.peek());        
-console.log(maxHeap.size());        
-
+console.log(res);
