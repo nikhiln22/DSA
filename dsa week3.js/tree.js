@@ -273,38 +273,38 @@
 
 // checking if two binary trees are identical
 
-class TreeNode {
-    constructor(value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
-    }
-}
+// class TreeNode {
+//     constructor(value) {
+//         this.value = value;
+//         this.left = null;
+//         this.right = null;
+//     }
+// }
 
-function areIdentical(tree1, tree2) {
+// function areIdentical(tree1, tree2) {
 
-    if (tree1 === null && tree2 === null) {
-        return true;
-    }
+//     if (tree1 === null && tree2 === null) {
+//         return true;
+//     }
 
-    if (tree1 === null || tree2 === null) {
-        return false;
-    }
+//     if (tree1 === null || tree2 === null) {
+//         return false;
+//     }
 
-    return (tree1.value === tree2.value) &&
-           areIdentical(tree1.left, tree2.left) &&
-           areIdentical(tree1.right, tree2.right);
-}
+//     return (tree1.value === tree2.value) &&
+//         areIdentical(tree1.left, tree2.left) &&
+//         areIdentical(tree1.right, tree2.right);
+// }
 
-let tree1 = new TreeNode(1);
-tree1.left = new TreeNode(2);
-tree1.right = new TreeNode(3);
+// let tree1 = new TreeNode(1);
+// tree1.left = new TreeNode(2);
+// tree1.right = new TreeNode(3);
 
-let tree2 = new TreeNode(1);
-tree2.left = new TreeNode(2);
-tree2.right = new TreeNode(3);
+// let tree2 = new TreeNode(1);
+// tree2.left = new TreeNode(2);
+// tree2.right = new TreeNode(3);
 
-console.log(areIdentical(tree1, tree2));
+// console.log(areIdentical(tree1, tree2));
 
 
 // inverting an binary tree
@@ -421,73 +421,7 @@ console.log(areIdentical(tree1, tree2));
 // console.log(bst.findClosestValue(6)); 
 
 
-// validating if its an BST
-
-// class TreeNode {
-//     constructor(value) {
-//         this.value = value;class TrieNode {
-//     constructor() {
-//         this.children = {};
-//         this.isEndOfWord = false;
-//     }
-// }
-
-// class Trie {
-//     constructor() {
-//         this.root = new TrieNode();
-//     }
-
-//     insert(word) {
-//         let node = this.root;
-//         for (let char of word) {
-//             if (!node.children[char]) {
-//                 node.children[char] = new TrieNode();
-//             }
-//             node = node.children[char];
-//         }
-//         node.isEndOfWord = true;
-//     }
-
-//     searchPrefix(prefix) {
-//         let node = this.root;
-//         for (let char of prefix) {
-//             if (!node.children[char]) {
-//                 return [];
-//             }
-//             node = node.children[char];
-//         }
-//         return this.getAllWords(node, prefix);
-//     }
-
-    
-//     getAllWords(node, prefix) {
-//         let result = [];
-//         if (node.isEndOfWord) {
-//             result.push(prefix);
-//         }
-
-//         for (let char in node.children) {
-//             result = result.concat(this.getAllWords(node.children[char], prefix + char));
-//         }
-
-//         return result;
-//     }
-// }
-
-
-// let trie = new Trie();
-// trie.insert("apple");
-// trie.insert("app");
-// trie.insert("apricot");
-// trie.insert("banana");
-
-// console.log(trie.searchPrefix("app")); // Output: ["apple", "app"]
-// console.log(trie.searchPrefix("apr")); // Output: ["apricot"]
-// console.log(trie.searchPrefix("ban"));
-//         this.left = null;
-//         this.right = null;
-//     }
-// }
+// validating an binary search tree
 
 // class BinarySearchTree {
 //     constructor() {
@@ -754,3 +688,105 @@ console.log(areIdentical(tree1, tree2));
 // bst.insert(20);
 
 // console.log(bst.findSecondLargest()); 
+
+// finding the sum of the node values in each every levels of an binary tree
+
+// class TreeNode{
+//     constructor(value){
+//         this.value = value;
+//         this.right = null;
+//         this.left = null;
+//     }
+
+//     sumNodes(root){
+//         if(!root){
+//             return 0;
+//         }
+//         return root.value + this.sumNodes(root.left) + this.sumNodes(root.right);
+//     }
+// }
+
+// let root = new TreeNode(1);
+// root.right = new TreeNode(2);
+// root.left = new TreeNode(3);
+// root.right.left = new TreeNode(4);
+// root.right.right = new TreeNode(5);
+// root.left.left = new TreeNode(6);
+// root.left.right = new TreeNode(7);
+
+// console.log(root.sumNodes(root));
+
+// displaying the values within the binary tree in an array format
+
+// class TreeNode {
+//     constructor(value) {
+//         this.value = value;
+//         this.right = null;
+//         this.left = null;
+//     }
+
+//     displayArray(root) {
+//         let result = [];
+//         if (!root) {
+//             return result;
+//         }
+
+//         result.push(root.value);
+//         result = result.concat(this.displayArray(root.left));
+//         result = result.concat(this.displayArray(root.right));
+
+//         return result;
+//     }
+
+// }
+
+
+// let root = new TreeNode(1);
+// root.right = new TreeNode(2);
+// root.left = new TreeNode(3);
+// root.right.left = new TreeNode(4);
+// root.right.right = new TreeNode(5);
+// root.left.left = new TreeNode(6);
+// root.left.right = new TreeNode(7);
+
+
+
+// console.log(root.displayArray(root));
+
+
+// building a tree which is configurable
+
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.children = [];
+    }
+
+    addChild(node) {
+        this.children.push(node);
+    }
+}
+
+class Ntree {
+    constructor() {
+        this.root = null;
+    }
+
+    insert(rootValue, n) {
+        if (!this.root) {
+            this.root = new Node(rootValue);
+        }
+        for (let i = 0; i < n; i++) {
+            const childNode = new Node(`child-${i + 1}`);
+            this.root.addChild(childNode);
+        }
+    }
+}
+
+const tree = new Ntree();
+
+tree.insert(10, 8);
+
+console.log(JSON.stringify(tree,null,2));
+
+// 

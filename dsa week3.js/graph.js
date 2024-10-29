@@ -118,7 +118,6 @@ console.log(graph.hasEdge('C', 'A')); // checking whether the edges exist betwee
 //         this.adjacencyList[vertex2].push(vertex1);
 //     }
  
-++
 //     shortestPath(start) {
 //         const queue = [start];
 //         const distances = {};
@@ -263,41 +262,41 @@ console.log(graph.hasEdge('C', 'A')); // checking whether the edges exist betwee
 
 // Given a graph, implement a depth-first search (DFS) traversal starting from a given node.
 
-// class Graph {
-//     constructor() {
-//         this.adjacencyList = {};
-//     }
+class Graph {
+    constructor() {
+        this.adjacencyList = {};
+    }
 
-//     addVertex(vertex) {
-//         if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
-//     }
+    addVertex(vertex) {
+        if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    }
 
-//     addEdge(vertex1, vertex2) {
-//         this.adjacencyList[vertex1].push(vertex2);
-//         this.adjacencyList[vertex2].push(vertex1); 
-//     }
+    addEdge(vertex1, vertex2) {
+        this.adjacencyList[vertex1].push(vertex2);
+        this.adjacencyList[vertex2].push(vertex1); 
+    }
 
-//     DFS(start) {
-//         const result = [];
-//         const visited = {};
-//         const adjacencyList = this.adjacencyList;
+    DFS(start) {
+        const result = [];
+        const visited = {};
+        const adjacencyList = this.adjacencyList;
 
-//         function dfsHelper(vertex) {
-//             if (!vertex) return null;
-//             visited[vertex] = true;
-//             result.push(vertex);
+        function dfsHelper(vertex) {
+            if (!vertex) return null;
+            visited[vertex] = true;
+            result.push(vertex);
 
-//             adjacencyList[vertex].forEach(neighbor => {
-//                 if (!visited[neighbor]) {
-//                     dfsHelper(neighbor);
-//                 }
-//             });
-//         }
+            adjacencyList[vertex].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    dfsHelper(neighbor);
+                }
+            });
+        }
 
-//         dfsHelper(start);
-//         return result;
-//     }
-// }
+        dfsHelper(start);
+        return result;
+    }
+}
 
 
 // let g = new Graph();
