@@ -1,26 +1,26 @@
 
 // representation of an graph in the adjacency matrix
 
-// const matrix = [
-//     [0, 1, 0],
-//     [1, 0, 1],
-//     [0, 1, 0]
-// ];
+const matrix = [
+    [0, 1, 0],
+    [1, 0, 1],
+    [0, 1, 0]
+];
 
-// console.log('matrix:', matrix[0][1]);
-// console.log('matrix:', matrix[0][0]);
+console.log('matrix:', matrix[0][1]);
+console.log('matrix:', matrix[0][0]);
 
 // representation of an graph in the adjacency list
 
-// adjacencyList = {
-//     'A':['B'],
-//     'B':['A','C'],
-//     'C':['B']
-// }
+adjacencyList = {
+    'A':['B'],
+    'B':['A','C'],
+    'C':['B']
+}
 
-// console.log(adjacencyList['A']);
-// console.log(adjacencyList['B']);
-// console.log(adjacencyList['C']);
+console.log(adjacencyList['A']);
+console.log(adjacencyList['B']);
+console.log(adjacencyList['C']);
 
 // implementataion of the graph data structure (adjacency list)
 
@@ -104,161 +104,161 @@ console.log(graph.hasEdge('C', 'A')); // checking whether the edges exist betwee
 
 // find the shortest path in the unweighted graph
 
-// class Graph {
-//     constructor() {
-//         this.adjacencyList = {};
-//     }
+class Graph {
+    constructor() {
+        this.adjacencyList = {};
+    }
 
-//     addVertex(vertex) {
-//         if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
-//     }
+    addVertex(vertex) {
+        if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    }
 
-//     addEdge(vertex1, vertex2) {
-//         this.adjacencyList[vertex1].push(vertex2);
-//         this.adjacencyList[vertex2].push(vertex1);
-//     }
+    addEdge(vertex1, vertex2) {
+        this.adjacencyList[vertex1].push(vertex2);
+        this.adjacencyList[vertex2].push(vertex1);
+    }
  
-//     shortestPath(start) {
-//         const queue = [start];
-//         const distances = {};
-//         const visited = {};
-//         distances[start] = 0;
+    shortestPath(start) {
+        const queue = [start];
+        const distances = {};
+        const visited = {};
+        distances[start] = 0;
 
-//         while (queue.length) {
-//             let vertex = queue.shift();
+        while (queue.length) {
+            let vertex = queue.shift();
 
-//             this.adjacencyList[vertex].forEach(neighbor => {
-//                 if (!visited[neighbor]) {
-//                     visited[neighbor] = true;
-//                     distances[neighbor] = distances[vertex] + 1;
-//                     queue.push(neighbor);
-//                 }
-//             });
-//         }
+            this.adjacencyList[vertex].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    distances[neighbor] = distances[vertex] + 1;
+                    queue.push(neighbor);
+                }
+            });
+        }
 
-//         return distances;
-//     }
-// }
+        return distances;
+    }
+}
 
-// let g = new Graph();
-// g.addVertex("A");
-// g.addVertex("B");
-// g.addVertex("C");
-// g.addVertex("D");
-// g.addEdge("A", "B");
-// g.addEdge("A", "C");
-// g.addEdge("B", "D");
+let g = new Graph();
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
 
-// console.log(g.shortestPath("A")); 
+console.log(g.shortestPath("A")); 
 
 // Detect an cycle in a directed graph
 
-// class Graph {
-//     constructor() {
-//         this.adjacencyList = {};
-//     }
+class Graph {
+    constructor() {
+        this.adjacencyList = {};
+    }
 
-//     addVertex(vertex) {
-//         if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
-//     }
+    addVertex(vertex) {
+        if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    }
 
-//     addEdge(vertex1, vertex2) {
-//         this.adjacencyList[vertex1].push(vertex2);
-//     }
+    addEdge(vertex1, vertex2) {
+        this.adjacencyList[vertex1].push(vertex2);
+    }
 
-//     detectCycle() {
-//         const visited = {};
-//         const recStack = {};
+    detectCycle() {
+        const visited = {};
+        const recStack = {};
 
-//         const dfs = (vertex) => {
-//             if (!visited[vertex]) {
-//                 visited[vertex] = true;
-//                 recStack[vertex] = true;
+        const dfs = (vertex) => {
+            if (!visited[vertex]) {
+                visited[vertex] = true;
+                recStack[vertex] = true;
 
-//                 for (let neighbor of this.adjacencyList[vertex]) {
-//                     if (!visited[neighbor] && dfs(neighbor)) {
-//                         return true;
-//                     } else if (recStack[neighbor]) {
-//                         return true;
-//                     }
-//                 }
-//             }
-//             recStack[vertex] = false;
-//             return false;
-//         };
+                for (let neighbor of this.adjacencyList[vertex]) {
+                    if (!visited[neighbor] && dfs(neighbor)) {
+                        return true;
+                    } else if (recStack[neighbor]) {
+                        return true;
+                    }
+                }
+            }
+            recStack[vertex] = false;
+            return false;
+        };
 
-//         for (let vertex in this.adjacencyList) {
-//             if (dfs(vertex)) {
-//                 return true;
-//             }
-//         }
+        for (let vertex in this.adjacencyList) {
+            if (dfs(vertex)) {
+                return true;
+            }
+        }
 
-//         return false;
-//     }
-// }
+        return false;
+    }
+}
 
 
-// let g = new Graph();
-// g.addVertex("A");
-// g.addVertex("B");
-// g.addVertex("C");
-// g.addEdge("A", "B");
-// g.addEdge("B", "C");
-// g.addEdge("C", "A");
+let g = new Graph();
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addEdge("A", "B");
+g.addEdge("B", "C");
+g.addEdge("C", "A");
 
-// console.log(g.detectCycle()); 
+console.log(g.detectCycle()); 
 
 
 // Given a Directed Acyclic Graph (DAG), perform a topological sort.
 
-// class Graph {
-//     constructor() {
-//         this.adjacencyList = {};
-//     }
+class Graph {
+    constructor() {
+        this.adjacencyList = {};
+    }
 
-//     addVertex(vertex) {
-//         if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
-//     }
+    addVertex(vertex) {
+        if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    }
 
-//     addEdge(vertex1, vertex2) {
-//         this.adjacencyList[vertex1].push(vertex2);
-//     }
+    addEdge(vertex1, vertex2) {
+        this.adjacencyList[vertex1].push(vertex2);
+    }
 
-//     topologicalSort() {
-//         const visited = {};
-//         const stack = [];
+    topologicalSort() {
+        const visited = {};
+        const stack = [];
 
-//         const dfs = (vertex) => {
-//             visited[vertex] = true;
-//             for (let neighbor of this.adjacencyList[vertex]) {
-//                 if (!visited[neighbor]) {
-//                     dfs(neighbor);
-//                 }
-//             }
-//             stack.push(vertex);
-//         };
+        const dfs = (vertex) => {
+            visited[vertex] = true;
+            for (let neighbor of this.adjacencyList[vertex]) {
+                if (!visited[neighbor]) {
+                    dfs(neighbor);
+                }
+            }
+            stack.push(vertex);
+        };
 
-//         for (let vertex in this.adjacencyList) {
-//             if (!visited[vertex]) {
-//                 dfs(vertex);
-//             }
-//         }
+        for (let vertex in this.adjacencyList) {
+            if (!visited[vertex]) {
+                dfs(vertex);
+            }
+        }
 
-//         return stack.reverse(); 
-//     }
-// }
+        return stack.reverse(); 
+    }
+}
 
 
-// let g = new Graph();
-// g.addVertex("A");
-// g.addVertex("B");
-// g.addVertex("C");
-// g.addVertex("D");
-// g.addEdge("A", "B");
-// g.addEdge("B", "C");
-// g.addEdge("A", "D");
+let g = new Graph();
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addEdge("A", "B");
+g.addEdge("B", "C");
+g.addEdge("A", "D");
 
-// console.log(g.topologicalSort()); 
+console.log(g.topologicalSort()); 
 
 // Given a graph, implement a depth-first search (DFS) traversal starting from a given node.
 
@@ -299,16 +299,16 @@ class Graph {
 }
 
 
-// let g = new Graph();
-// g.addVertex("A");
-// g.addVertex("B");
-// g.addVertex("C");
-// g.addVertex("D");
-// g.addEdge("A", "B");
-// g.addEdge("A", "C");
-// g.addEdge("B", "D");
+let g = new Graph();
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
 
-// console.log(g.DFS("A")); 
+console.log(g.DFS("A")); 
 
 
 // implement a Breadth-First Search (BFS) Traversal of a Graph

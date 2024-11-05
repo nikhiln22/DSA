@@ -1,4 +1,6 @@
 
+// Building the min heap
+
 class MinHeap {
     constructor() {
         this.heap = [];
@@ -20,9 +22,9 @@ class MinHeap {
         }
     }
 
-    // print() {
-    //     console.log('currentHeap:', this.heap);
-    // }
+    print() {
+        console.log('currentHeap:', this.heap);
+    }
 }
 
 const minHeap = new MinHeap();

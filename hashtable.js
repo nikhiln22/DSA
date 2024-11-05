@@ -131,9 +131,6 @@ let string2 = 'silent';
 function areAnagrams(str1, str2) {
     if (str1.length !== str2.length) return false;
 
-    // const hashTable = 
-
-   
     for (let char of str1) {
         hashTable[char] = (hashTable[char] || 0) + 1;
     }
