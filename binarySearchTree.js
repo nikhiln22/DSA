@@ -493,3 +493,7 @@ root.right.right = new TreeNode(20);
 
 
 console.log('minimum depth of the BST is:',minDepth(root));
+
+// count how many number of left nodes are there in the binary search tree ?
+
+// count how many number of right nodes are there in the binary search tree ?

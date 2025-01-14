@@ -9,7 +9,8 @@ function recursiveFibbonaci(n){
 console.log(recursiveFibbonaci(3))
 
 
-generate the fibonacci series using recursion
+// generate the fibonacci series using recursion
+
 function fib(n) {
     if (n < 2) return n
     return fib(n - 1) + fib(n - 2);

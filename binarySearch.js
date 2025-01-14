@@ -93,7 +93,7 @@ function searchRange(nums, target) {
 
 console.log(searchRange(array,target));
 
-// find the second largest element from an array
+// find the minimum element from an rotated sorted array
 
 const array = [4, 5, 6, 7, 0, 1, 2];
 
