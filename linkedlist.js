@@ -1084,3 +1084,6 @@ class LinkedList{
     }
 }
 
+// Reverse the given linked list 'n'-->'i'-->'k'-->'h'-->'i'-->'l'
+
+// output will be "l"-->"i"-->'h'-->'k'-->'i'-->'n'

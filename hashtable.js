@@ -171,3 +171,42 @@ function firstNonRepeatingChar(str) {
 }
 
 console.log(firstNonRepeatingChar(string));
+
+// find the first repeating character in an string using the hash table
+
+let str = "swiss";
+
+function repeating(str){
+    let hashTable = {};
+    for(let char of str){
+        if(hashTable[char]){
+            return char;
+        }else{
+            hashTable[char] = true;
+            console.log("hashTable:",hashTable)
+        }
+    }
+    return null
+}
+
+
+console.log(repeating(str))
+
+// remove the vowels from an string using the hashtable
+
+let str = "today is my review";
+
+function removeVowels(str){
+    let vowels = {"a":true,"e":true,"i":true,"o":true,"u":true};
+    let result = "";
+    
+    for(let char of str){
+        if(!vowels[char]){
+            result+=char;
+        }
+    }
+    
+    return result
+}
+
+console.log(removeVowels(str))

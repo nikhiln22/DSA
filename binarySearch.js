@@ -115,3 +115,7 @@ function findMinimumInRotatedSortedArray(array) {
 }
 
 console.log(findMinimumInRotatedSortedArray(array));
+
+// find the index of the target in the given array of strings using binary search and recursion
+let arr = ['a','b','c','d'];
+let target = 'd';

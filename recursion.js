@@ -314,3 +314,28 @@ let flattenedArray = flattenArray(arr);
 
 console.log(flattenedArray);
 
+// find the duplicates from the array of strings using the recursion
+
+let arr = ['a','b','c','a','b'];
+
+// delete the duplicate even numbers from the given array using the recursion
+
+let arr = [1,2,3,4,2,5,8,4];
+
+function removeDuplicatesEven(arr,index,found = new Set()){
+    
+    if(index === arr.length){
+        return arr;
+    }
+    
+    if(found.has(arr[index])){
+        arr.splice(index,1);
+        return removeDuplicatesEven(arr,index,found)
+    }else{
+        found.add(arr[index]);
+         return removeDuplicatesEven(arr,index+1,found)
+    }
+}
+
+console.log(removeDuplicatesEven(arr,0));
+

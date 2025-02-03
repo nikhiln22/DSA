@@ -124,5 +124,28 @@ function isPalindrome(str, start, end) {
 
 console.log(isPalindrome('bahubai', 0, 'malayalam'.length - 1));
 
+// reverse the words in the string in-place
+
+let str = "hello world";
+
+function reverseWord(str){
+    let temp = "";
+    let result = "";
+    
+    for(let i=0;i<str.length;i++){
+        if(str[i]!==' '){
+            temp=str[i]+temp
+        }else{
+            result+=temp+" ";
+            temp=""
+        }
+    }
+    
+    result+=temp
+    return result
+}
+
+console.log(reverseWord(str));
+
 
 
