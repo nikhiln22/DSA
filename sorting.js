@@ -111,5 +111,56 @@ function insertionSort(arr) {
 
 console.log(insertionSort(arr));
 
+// implementing the quick sort for changing the array in the ascending order
+
+let arr = [10,0,13,28,1];
+
+function quickSort(arr){
+    if(arr.length<2){
+        return arr
+    }
+    let pivot = arr[arr.length-1];
+    let leftArray = [];
+    let rightArray = [];
+    for(let i=0;i<arr.length-1;i++){
+        if(arr[i]<pivot){
+            leftArray.push(arr[i]);
+        }else{
+            rightArray.push(arr[i]);
+        }
+    }
+    return [...quickSort(leftArray),pivot,...quickSort(rightArray)];
+}
+
+console.log(quickSort(arr))
+
+// implementing the quick sort for changing the string in the ascending order
+
+let name = "nikhil";
+
+function quickSort(arr){
+    if(arr.length<2){
+        return arr
+    }
+    
+    let pivot = arr[arr.length-1];
+    let rightArray = [];
+    let leftArray = [];
+    
+    for(let i=0;i<arr.length-1;i++){
+        if(arr[i]<pivot){
+            leftArray.push(arr[i]);
+        }else{
+            rightArray.push(arr[i]);
+        }
+    }
+    
+    return [...quickSort(leftArray),pivot,...quickSort(rightArray)]
+}
+
+let sortedName = quickSort(name.split('')).join('');
+
+console.log("sortedName:",sortedName);
+
 
 
