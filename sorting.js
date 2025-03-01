@@ -162,5 +162,38 @@ let sortedName = quickSort(name.split('')).join('');
 
 console.log("sortedName:",sortedName);
 
+// implementing the merge sort for changing the array in the ascending order
+
+function mergeSorting(arr){
+    
+    if(arr.length<2){
+        return arr;
+    }
+    
+    let mid = Math.floor(arr.length/2);
+    let leftArray = arr.slice(0,mid);
+    let rightArray = arr.slice(mid);
+    
+    return mergeSortingHelper(mergeSorting(leftArray),mergeSorting(rightArray))
+}
+
+
+function mergeSortingHelper(leftArray,rightArray){
+    let sorted = [];
+    
+    while(leftArray.length && rightArray.length){
+        if(leftArray[0]<=rightArray[0]){
+            sorted.push(leftArray.shift());
+        }else{
+            sorted.push(rightArray.shift())
+        }
+    }
+    
+    return [...sorted,...leftArray,...rightArray]
+}
+
+console.log(mergeSorting([5,4,3,9,0,1000,-1,200]))
+
+
 
 
