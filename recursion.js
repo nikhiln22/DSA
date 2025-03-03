@@ -339,3 +339,31 @@ function removeDuplicatesEven(arr,index,found = new Set()){
 
 console.log(removeDuplicatesEven(arr,0));
 
+// find the sum of the odd numbers in an array and also replace the non odd numbers with zero using the recursion
+
+let arr = [1,2,3,4,5]
+
+function fixAlternatives(arr,index){
+    if(index === arr.length){
+        return 0;
+    }
+    
+    if(arr[index]%2!==0){
+        return arr[index] + fixAlternatives(arr,index+1);
+    }else{
+        arr[index] = 0;
+    }
+    
+    return fixAlternatives(arr,index+1)
+}
+
+
+console.log(fixAlternatives(arr,0));
+
+console.log("arr:",arr);
+
+
+// find the total count of the zeros in the given array ?
+
+let arr = [1, 4,0, [7, 0, 5, [0, 6], 0. 9], 9, 0]
+

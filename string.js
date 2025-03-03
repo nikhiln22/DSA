@@ -147,5 +147,66 @@ function reverseWord(str){
 
 console.log(reverseWord(str));
 
+// You are given a string consisting of lowercase letters. Write a JavaScript program to find the longest contiguous sequence 
+// of the same character in the string.
+
+// let str = "teetteeeety"; 
+
+// output = "eeeee";
+
+let count = 1
+let maxWord = '';
+let word = "";
+
+for (let i = 1; i < str.length; i++) {
+    if (str[i] === str[i - 1]) {
+        count++;
+        word += str[i]
+    } else {
+        if (word.length > maxWord.length) {
+            maxWord = word;
+        }
+        count = 1
+        word = str[i]
+    }
+}
+
+if (word.length > maxWord.length) {
+    maxWord = word
+}
+
+
+console.log(maxWord)
+
+// find the second longest word in sentence without inbuilt split()
+
+let str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+let firstLongest = "";
+let secondLongest = "";
+let word = "";
+
+for (let i = 0; i < str.length; i++) {
+    if (str[i] !== " ") {
+        word += str[i];
+    } else {
+        if (word.length > firstLongest.length) {
+            secondLongest = firstLongest;
+            firstLongest = word;
+        } else if (word.length > secondLongest.length && word.length !== firstLongest.length) {
+            secondLongest = word
+        }
+        word = ""
+    }
+}
+
+if (word.length > firstLongest.length) {
+    secondLongest = firstLongest;
+    firstLongest = word;
+} else if (word.length > secondLongest.length && word.length !== firstLongest.length) {
+    secondLongest = word
+}
+
+console.log("secondLongest:", secondLongest)
 
 

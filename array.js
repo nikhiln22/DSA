@@ -7,15 +7,15 @@ function result(nums, result) {
     for (let i = 0; i < nums.length - 1; i++) {
         for (let j = i + 1; j < nums.length; j++) {
             if (nums[i] + nums[j] === result) {
-                pairs.push(nums[i],nums[j])
+                pairs.push(nums[i], nums[j])
             }
         }
     }
     return pairs
 }
 
-let findingPairs = result(arr,target);
-console.log('findingPairs:',findingPairs);
+let findingPairs = result(arr, target);
+console.log('findingPairs:', findingPairs);
 
 
 // moving the desired number to the end of the array
@@ -68,10 +68,10 @@ console.log('element with maximum occurance:', maxKey);
 // checking whether all elements are unique
 
 let arr = [1, 2, 3, 4, 5];
-function isUnique(array){
-    for(let i=0;i<array.length-1;i++){
-        for(let j=i+1;j<array.length;j++){
-            if(array[i] === array[j]){
+function isUnique(array) {
+    for (let i = 0; i < array.length - 1; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[i] === array[j]) {
                 return false;
             }
         }
@@ -108,15 +108,15 @@ function missingElement(array, n) {
     return expectedSum - actualSum
 }
 
-console.log(missingElement(arr,n));
+console.log(missingElement(arr, n));
 
 
 // Given a number 'n', find the first n elements of the fibonacci sequence?
 
 function fibonacci(n) {
     let arr = [0, 1];
-    for (let i = 2; i < n; i++){
-        arr[i] = arr[i-1] + arr[i-2];
+    for (let i = 2; i < n; i++) {
+        arr[i] = arr[i - 1] + arr[i - 2];
     }
     console.log(arr);
 }
@@ -394,3 +394,158 @@ function isPrime(num) {
 }
 
 console.log(findPrime(array));
+
+// delete the adjacent odd numbers occuring in the array
+
+// output : [4,5,6,8,9,10]
+
+let arr = [1, 3, 3, 4, 5, 6, 7, 7, 8, 9, 10];
+let flag = false;
+for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 !== 0 && arr[i + 1] % 2 !== 0) {
+        arr.splice(i, 1);
+        i--;
+        flag = true;
+    } else if (flag) {
+        arr.splice(i, 1);
+        i--;
+        flag = false;
+    }
+}
+
+console.log(arr);
+
+
+// reverse the array and also reverse the odd numbers in the array
+
+let data = [1, 2, 3, 4, 5];
+
+let reversedArray = data.reverse();
+
+console.log("reversedArray:", reversedArray);
+
+let oddNumbers = reversedArray.filter((val) => val % 2 !== 0).reverse();
+
+console.log("oddNumbers:", oddNumbers);
+
+let oddIndex = 0;
+
+let output = reversedArray.map((val) => {
+    if (val % 2 !== 0) {
+        return oddNumbers[oddIndex++];
+    }
+    return val;
+});
+
+console.log(output);
+
+// You are given an array of consecutive numbers:
+
+const ab = [3, 4, 5, 6, 7, 8, 9, 10]
+
+// Write a JavaScript program that generates an array of objects, where:
+
+// - Each object contains key-value pairs in the format {a{index}: value}.
+
+// - The keys start from a8 for the last element and decrease sequentially (a7, a6, etc.), 
+// while the values correspond to the elements of the given array.
+
+// - The first object contains only the last element, 
+// and each subsequent object builds upon the previous one by adding the next element from the end.
+
+// For example, the output should be:
+
+// output = [
+//     { a8: 10 },
+//     { a8: 10, a7: 9 },
+//     { a8: 10, a7: 9, a6: 8 },
+//     { a8: 10, a7: 9, a6: 8, a5: 7 },
+//     { a8: 10, a7: 9, a6: 8, a5: 7, a4: 6 },
+//     { a8: 10, a7: 9, a6: 8, a5: 7, a4: 6, a3: 5 },
+//     { a8: 10, a7: 9, a6: 8, a5: 7, a4: 6, a3: 5, a2: 4 },
+//     { a8: 10, a7: 9, a6: 8, a5: 7, a4: 6, a3: 5, a2: 4, a1: 3 }
+// ]
+
+
+function convert(a) {
+    let output = []
+    let data = {}
+    for (let i = a.length - 1; i >= 0; i--) {
+        data[`a${i + 1}`] = a[i]
+
+        output.push({ ...data })
+    }
+    return output
+}
+
+console.log(convert(ab))
+
+// You are given an array of numbers:
+
+const ab = [2, 4, 98, 3, -2];
+
+// Write a JavaScript program that transforms this array into an array of objects, where:
+
+// - Each object is built progressively from the smallest element to the largest (in order).
+// - The keys in the objects follow the format el1, el2, el3, etc., representing their positions in the new sequence.
+// - The values in the objects correspond to the elements of the sorted array in ascending order.
+
+// The expected output should be:
+
+// output = [
+//     { el1: -2 },
+//     { el1: -2, el2: 3 },
+//     { el1: -2, el2: 3, el3: 98 },
+//     { el1: -2, el2: 3, el3: 98, el4: 4 },
+//     { el1: -2, el2: 3, el3: 98, el4: 4, el5: 2 }
+// ]
+
+const ab = [2, 4, 98, 3, -2];
+
+let obj = {};
+let output = [];
+
+for (let i = 0; i < ab.length; i++) {
+    obj[`el${i + 1}`] = ab[ab.length - i - 1];
+    output.push({ ...obj })
+}
+
+console.log(output)
+
+
+// - largest number from each subarray ?
+
+let arr = [[2,3,1],[2,23,4,12],[12,4,12,3],[2,-4,12,42,14,2]]
+
+// the expected output will be
+
+// Number 1 from array 1: 2
+// Number 2 from array 2: 23
+// Number 3 from array 3: 12
+// Number 4 from array 4: 42
+
+// given an array ?
+
+const b = [1,2,3,4,5,6,7,8,9,10];
+
+// write a javascript program to print the numbers in the above array in the following pattern ?
+
+// 1
+// 1 2
+// 1 2 3
+// 1 2 3 4
+// 1 2 3 4 5
+// 1 2 3 4 5 6
+// 1 2 3 4 5 6 7 8
+// 1 2 3 4 5 6 7 8 9
+// 1 2 3 4 5 6 7 8 9 10
+
+
+for(let i=0;i<b.length;i++){
+    let row = '';
+    for(let j=0;j<b[i];j++){
+        row += b[j] + ' ';
+    }
+    console.log(row);
+}
+
