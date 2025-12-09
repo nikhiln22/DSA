@@ -134,7 +134,52 @@ let board = [
 let words = ["oath", "pea", "eat", "rain"];
 console.log(findWords(board, words));
 
-// Given a prefix, return all words in the Trie that start with the given prefix.
+// Write a function startsWith(prefix) that checks if any word in the Trie starts with the given prefix.
+//  Return true if the prefix exists, otherwise return false.
+
+class TrieNode{
+    constructor(){
+        this.children = {};
+        this.isEnd = false;
+    }
+}
+
+class Trie{
+    constructor(){
+        this.root = new TrieNode();
+    }
+    
+    insert(word){
+        let curr = this.root;
+        for(let char of word){
+            if(!curr.children[char]){
+                curr.children[char] = new TrieNode()
+            }
+            curr = curr.children[char];
+        }
+        curr.isEnd = true;
+    }
+        
+    startsWith(prefix){
+        let curr = this.root;
+        for(let char of prefix){
+            if(!curr.children[char]) return false
+            curr = curr.children[char]
+        }
+        return true
+    }
+}
+
+const trie = new Trie();
+
+trie.insert("Apple");
+trie.insert("Apricot")
+trie.insert("Ant");
+
+console.log(trie.startsWith("App"));
+
+
+// Given a prefix, return all words in the Trie that start with the given prefix.(auto-completion)
 
 class TrieNode {
   constructor() {
