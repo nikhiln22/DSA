@@ -135,3 +135,60 @@ root.left.right = new TreeNode(7);
 
 console.log(root.displayArray(root));
 
+// converting the binary tree to bst
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(value) {
+    const node = new Node(value);
+    if (this.root === null) {
+      this.root = node;
+    } else {
+      this.insertHelper(this.root, node);
+    }
+  }
+
+  insertHelper(root, node) {
+    if (node.value < root.value) {
+      if (root.left === null) {
+        root.left = node;
+      } else {
+        this.insertHelper(root.left, node);
+      }
+    } else {
+      if (root.right === null) {
+        root.right = node;
+      } else {
+        this.insertHelper(root.right, node);
+      }
+    }
+  }
+}
+
+function binaryTreeToBST(root, bst) {
+  if (!root) return;
+
+  let queue = [root];
+
+  while (queue.length > 0) {
+    let curr = queue.shift();
+
+    bst.insert(curr.value);
+
+    if (curr.left) queue.push(curr.left);
+    if (curr.right) queue.push(curr.right);
+  }
+}
+
+

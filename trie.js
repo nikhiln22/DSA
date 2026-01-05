@@ -178,7 +178,6 @@ trie.insert("Ant");
 
 console.log(trie.startsWith("App"));
 
-
 // Given a prefix, return all words in the Trie that start with the given prefix.(auto-completion)
 
 class TrieNode {
@@ -237,6 +236,73 @@ trie.insert("app");
 trie.insert("apricot");
 trie.insert("banana");
 
-console.log(trie.searchPrefix("app")); // Output: ["apple", "app"]
-console.log(trie.searchPrefix("apr")); // Output: ["apricot"]
-console.log(trie.searchPrefix("ban")); // Output: ["banana"]
+console.log(trie.searchPrefix("app")); 
+console.log(trie.searchPrefix("apr")); 
+console.log(trie.searchPrefix("ban"));
+
+// find the longest common prefix from an trie
+
+class TrieNode {
+  constructor() {
+    this.children = {};
+    this.isEnd = false;
+  }
+}
+
+class Trie {
+  constructor() {
+    this.root = new TrieNode();
+  }
+
+  insert(word) {
+    let curr = this.root;
+    for (let char of word) {
+      if (!curr.children[char]) {
+        curr.children[char] = new TrieNode();
+      }
+      curr = curr.children[char];
+    }
+    curr.isEnd = false;
+  }
+
+  search(word) {
+    let curr = this.root;
+    for (let char of word) {
+      if (!curr.children[char]) {
+        return false;
+      }
+      curr = curr.children[char];
+    }
+    return curr.isEnd;
+  }
+
+  longestPrefix() {
+    let curr = this.root;
+    let prefix = "";
+
+    while (true) {
+      const childrenKeys = Object.keys(curr.children);
+
+      if (childrenKeys.length !== 1 || curr.isEnd) {
+        break;
+      }
+
+      const char = childrenKeys[0];
+      prefix += char;
+      curr = curr.children[char];
+    }
+    if (prefix === "") {
+      return "No common Prefix found";
+    } else {
+      return prefix;
+    }
+  }
+}
+
+const trie = new Trie();
+
+trie.insert("flower");
+trie.insert("floor");
+
+console.log(trie.longestPrefix());
+
